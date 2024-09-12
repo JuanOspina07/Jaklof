@@ -1,6 +1,6 @@
 import "../styles/Products.css";
-import ShoppingCart from "@mui/icons-material/ShoppingCart.js";
-import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart.js";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
+import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart";
 import { useCart } from "../hooks/useCart.js";
 
 export function Products({ products }) {
