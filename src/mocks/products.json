@@ -1,0 +1,101 @@
+{
+   "products": [
+     {
+       "id": 30,
+       "title": "Chaqueta ",
+       "description": "Attractive Design, Metallic material, Four key hooks, Reliable & Durable, Premium Quality",
+       "price": 280,
+       "discountPercentage": 2.92,
+       "rating": 4.92,
+       "stock": 25,
+       "brand": "Golden",
+       "category": "Men",
+       "talla": "S / M / L / Xl",
+       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda1.jpg",
+       "images": [
+         "https://tinypic.host/images/2024/09/05/prenda1.jpg"
+       ]
+     },
+     {
+       "id": 31,
+       "title": "Pantalon",
+       "description": "Soft and comfortable cotton material, Trendy design, Perfect for casual wear",
+       "price": 250,
+       "discountPercentage": 5.50,
+       "rating": 4.75,
+       "stock": 100,
+       "brand": "TrendWear",
+       "category": "Men",
+       "talla": "S / M / L / Xl",
+       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda2.jpg",
+       "images": [
+         "https://tinypic.host/images/2024/09/05/prenda2.jpg"
+       ]
+     },
+     {
+       "id": 32,
+       "title": "Buso SummerColection white",
+       "description": "Comfortable and durable, Lightweight, Modern style",
+       "price": 120,
+       "discountPercentage": 10.00,
+       "rating": 4.89,
+       "stock": 30,
+       "brand": "SneakerPro",
+       "category": "Men",
+       "talla": "S / M / L / Xl",
+       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda3.jpg",
+       "images": [
+         "https://tinypic.host/images/2024/09/05/prenda3.jpg"
+       ]
+     },
+     {
+       "id": 33,
+       "title": "Buso SummerColection Black",
+       "description": "Water-resistant, Windproof, Stylish and warm, Great for outdoor activities",
+       "price": 120,
+       "discountPercentage": 8.50,
+       "rating": 4.80,
+       "stock": 40,
+       "brand": "OutdoorGear",
+       "category": "Women",
+       "talla": "S / M / L / Xl",
+       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda4.jpg",
+       "images": [
+         "https://tinypic.host/images/2024/09/05/prenda4.jpg"
+       ]
+     },
+     {
+       "id": 34,
+       "title": "Buso ",
+       "description": "Spacious compartments, Durable material, Perfect for travel and school",
+       "price": 85,
+       "discountPercentage": 6.75,
+       "rating": 4.85,
+       "stock": 25,
+       "brand": "TravelPlus",
+       "category": "Women",
+       "talla": "S / M / L / Xl",
+       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda5.jpg",
+       "images": [
+         "https://tinypic.host/images/2024/09/05/prenda5.jpg"
+       ]
+     },
+     {
+       "id": 35,
+       "title": "buso",
+       "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+       "price": 85,
+       "discountPercentage": 4.25,
+       "rating": 4.70,
+       "stock": 75,
+       "brand": "Women",
+       "talla": "S / M / L / Xl",
+       "category": "accessories",
+       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda6.jpg",
+       "images": [
+         "https://tinypic.host/images/2024/09/05/prenda6.jpg"
+       ]
+     }
+   ]
+ }
+ 
