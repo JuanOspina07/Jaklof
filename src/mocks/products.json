@@ -2,100 +2,404 @@
    "products": [
      {
        "id": 30,
-       "title": "Chaqueta ",
+       "title": "Sudadera",
        "description": "Attractive Design, Metallic material, Four key hooks, Reliable & Durable, Premium Quality",
-       "price": 280,
+       "price": 120,
        "discountPercentage": 2.92,
        "rating": 4.92,
        "stock": 25,
        "brand": "Golden",
        "category": "Men",
        "talla": "S / M / L / XL",
-       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda1.jpg",
+       "thumbnail": "https://tinypic.host/images/2024/09/16/prenda1.jpg",
        "images": [
-         "https://tinypic.host/images/2024/09/05/prenda1.jpg"
+         "https://tinypic.host/images/2024/09/16/prenda1.jpg"
        ]
      },
      {
        "id": 31,
-       "title": "Pantalon",
+       "title": "Camiseta",
        "description": "Soft and comfortable cotton material, Trendy design, Perfect for casual wear",
-       "price": 250,
+       "price": 99,
        "discountPercentage": 5.50,
        "rating": 4.75,
        "stock": 100,
        "brand": "TrendWear",
        "category": "Men",
        "talla": "S / M / L / XL",
-       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda2.jpg",
+       "thumbnail": "https://tinypic.host/images/2024/09/16/prenda2.jpg",
        "images": [
-         "https://tinypic.host/images/2024/09/05/prenda2.jpg"
+         "https://tinypic.host/images/2024/09/16/prenda2.jpg"
        ]
      },
      {
        "id": 32,
-       "title": "Buso SummerColection white",
+       "title": "Saco",
        "description": "Comfortable and durable, Lightweight, Modern style",
        "price": 120,
        "discountPercentage": 10.00,
        "rating": 4.89,
        "stock": 30,
        "brand": "SneakerPro",
-       "category": "Men",
-       "talla": "S / M / L / XL",
-       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda3.jpg",
-       "images": [
-         "https://tinypic.host/images/2024/09/05/prenda3.jpg"
-       ]
-     },
-     {
-       "id": 33,
-       "title": "Buso SummerColection Black",
-       "description": "Water-resistant, Windproof, Stylish and warm, Great for outdoor activities",
-       "price": 120,
-       "discountPercentage": 8.50,
-       "rating": 4.80,
-       "stock": 40,
-       "brand": "OutdoorGear",
        "category": "Women",
-       "talla": "S / M / L / Xl",
-       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda4.jpg",
+       "talla": "S / M / L / XL",
+       "thumbnail": "https://tinypic.host/images/2024/09/16/prenda3.jpg",
        "images": [
-         "https://tinypic.host/images/2024/09/05/prenda4.jpg"
+         "https://tinypic.host/images/2024/09/16/prenda3.jpg"
        ]
      },
      {
        "id": 34,
-       "title": "Buso ",
+       "title": "Saco ",
        "description": "Spacious compartments, Durable material, Perfect for travel and school",
-       "price": 85,
+       "price": 120,
        "discountPercentage": 6.75,
        "rating": 4.85,
        "stock": 25,
        "brand": "TravelPlus",
        "category": "Women",
        "talla": "S / M / L / XL",
-       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda5.jpg",
+       "thumbnail": "https://tinypic.host/images/2024/09/16/producto4.jpg",
        "images": [
-         "https://tinypic.host/images/2024/09/05/prenda5.jpg"
+         "https://tinypic.host/images/2024/09/16/producto4.jpg"
        ]
      },
      {
        "id": 35,
-       "title": "buso",
+       "title": "Saco",
        "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
-       "price": 85,
+       "price": 120,
        "discountPercentage": 4.25,
        "rating": 4.70,
        "stock": 75,
-       "brand": "Women",
+       "brand": "Men",
        "talla": "S / M / L / XL",
-       "category": "accessories",
-       "thumbnail": "https://tinypic.host/images/2024/09/05/prenda6.jpg",
+       "category": "Men",
+       "thumbnail": "https://tinypic.host/images/2024/09/16/producto5.jpg",
        "images": [
-         "https://tinypic.host/images/2024/09/05/prenda6.jpg"
+         "https://tinypic.host/images/2024/09/16/producto5.jpg"
        ]
-     }
+     },
+     {
+      "id": 36,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 130,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Men",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/producto6.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/producto6.jpg"
+      ]
+    },
+    {
+      "id": 37,
+      "title": "Chaleco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "accessories",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda7.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda7.jpg"
+      ]
+    },
+    {
+      "id": 38,
+      "title": "Buso",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 99,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "accessories",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda8.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda8.jpg"
+      ]
+    },
+    {
+      "id": 39,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 130,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "accessories",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda9.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda9.jpg"
+      ]
+    },
+    {
+      "id": 40,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 145,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Men",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda10.jpg",
+      "images": 
+        "https://tinypic.host/images/2024/09/16/prenda10.jpg"
+      
+    },
+    {
+      "id": 41,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 135,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Women",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda11.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda11.jpg"
+      ]
+    },
+    {
+      "id": 42,
+      "title": "Buso",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 99,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Men",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda12.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda12.jpg"
+      ]
+    },
+    {
+      "id": 43,
+      "title": "Pantaloneta",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Men",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda13.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda13.jpg"
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Buso",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 99,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Women",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda14.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda14.jpg"
+      ]
+    },
+    {
+      "id": 45,
+      "title": "Pantaloneta",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 95,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Men",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda15.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda15.jpg"
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Buso",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Women",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda16.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda16.jpg"
+      ]
+    },
+    {
+      "id": 47,
+      "title": "Buso",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda17.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda17.jpg"
+      ]
+    },
+    {
+      "id": 48,
+      "title": "Buso",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda18.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda18.jpg"
+      ]
+    },
+    {
+      "id": 49,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Women",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda19.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda19.jpg"
+      ]
+    },
+    {
+      "id": 50,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Women",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda20.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda20.jpg"
+      ]
+    },
+    {
+      "id": 51,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda21.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda21.jpg"
+      ]
+    },
+    {
+      "id": 52,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda22.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda22.jpg"
+      ]
+    },
+    {
+      "id": 53,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda23.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda23.jpg"
+      ]
+    },
+    {
+      "id": 54,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Women",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda24.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda24.jpg"
+      ]
+    },
+    {
+      "id": 55,
+      "title": "Saco",
+      "description": "Comfortable fit, Trendy design, Protects from the sun, Unisex",
+      "price": 85,
+      "discountPercentage": 4.25,
+      "rating": 4.70,
+      "stock": 75,
+      "brand": "Women",
+      "talla": "S / M / L / XL",
+      "category": "Men",
+      "thumbnail": "https://tinypic.host/images/2024/09/16/prenda25.jpg",
+      "images": [
+        "https://tinypic.host/images/2024/09/16/prenda25.jpg"
+      ]
+    }
    ]
  }
  
