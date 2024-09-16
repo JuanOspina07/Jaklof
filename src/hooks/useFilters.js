@@ -1,9 +1,10 @@
-import { useContext } from 'react'
-import { FiltersContext } from '../context/filters.jsx'
+import { useContext } from 'react';
+import { FiltersContext } from '../context/filters.jsx';
 
-export function useFilters () {
-  const { filters, setFilters } = useContext(FiltersContext)
+export function useFilters() {
+  const { filters, setFilters } = useContext(FiltersContext);
 
+  // Filtra los productos en base a los filtros actuales
   const filterProducts = (products) => {
     return products.filter(product => {
       return (
@@ -12,9 +13,9 @@ export function useFilters () {
           filters.category === 'all' ||
           product.category === filters.category
         )
-      )
-    })
-  }
+      );
+    });
+  };
 
-  return { filters, filterProducts, setFilters }
+  return { filters, filterProducts, setFilters };
 }

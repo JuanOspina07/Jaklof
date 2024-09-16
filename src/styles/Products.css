@@ -1,20 +1,18 @@
 .products {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%; 
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .products ul {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(
-      200px,
-      1fr
-    )
-  );
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 6rem;
+  width: 100%; 
+  list-style: none; 
+  padding: 0;
+  margin: 0; 
+  font-size: 1.5rem;
 }
 
 .products li {
@@ -26,6 +24,9 @@
   background: #111;
   color: #fff;
   padding: 1rem;
+
+  position: relative; /* Necesario para posicionar la descripción */
+  overflow: hidden;   /* Para que no se desborden elementos */
 }
 
 .products h3 {
@@ -33,15 +34,66 @@
 }
 
 .products span {
-  font-size: 1rem;
+  font-size: 1.3rem;
   opacity: .9;
 }
 
 .products img {
   border-radius: 4px;
   width: 100%;
+  height: 270px;
   aspect-ratio: 16/9;
   display: block;
   object-fit: cover;
   background: #fff;
+
+  transition: opacity 0.3s ease; /* Transición suave al ocultar */
+}
+.shadow__btn {
+  padding: 5px 10px;
+  width: 50px;
+  border: none;
+  font-size: 15px;
+  color: #fff;
+  border-radius: 9px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+}
+.shadow__btn {
+  background: rgb(0,153,117);
+  box-shadow: 0 0 25px rgb(0,153,117);
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0,153,117),
+              0 0 25px rgb(0,153,117),
+              0 0 50px rgb(0,153,117),
+              0 0 100px rgb(0,153,117);
+}
+.products .description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Ocultar la descripción inicialmente */
+  transition: opacity 0.3s ease; /* Transición suave al aparecer */
+  padding: 1rem;
+  text-align: center;
+}
+
+.products li:hover img {
+  opacity: 0; /* Ocultar la imagen al pasar el cursor */
+}
+
+.products li:hover .description {
+  opacity: 1; /* Mostrar la descripción al pasar el cursor */
 }

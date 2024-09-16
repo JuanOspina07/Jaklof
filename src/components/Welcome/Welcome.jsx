@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/Welcome.css';
 import { Header } from '../Header';
 import { Cart } from '../Cart';
 import { Products } from '../Products';

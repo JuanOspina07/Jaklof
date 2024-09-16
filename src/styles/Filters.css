@@ -1,12 +1,56 @@
+
+.tittle{
+  color: #eaff82;
+    font-family: "seasons";
+    text-align: center;
+    font-size: 7rem;
+    margin-bottom: 0px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeIn 1.5s ease;
+}
 .filters {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
+  flex-direction: column;
+  font-family: agrandir;
+  gap: 2rem;
+  font-size: 20px;
   font-weight: 700;
+  align-items: center;
 }
 
 .filters > div {
   display: flex;
   gap: 1rem;
+  align-items: center;
+}
+
+.category-buttons {
+  font-family: agrandir;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 300px;
+  margin-left: -100px;
+}
+
+.category-buttons button {
+  background-color: #000;
+  border: 1px solid #ccc;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.category-buttons button.active {
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.category-buttons button:hover {
+  background-color: #007bff;
 }

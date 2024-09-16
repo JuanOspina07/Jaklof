@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "CharuChan";
+    src: url(Charu_Chandan_BloodDrip_Unicode/Charu_Chandan_BloodDrip_Unicode-Regular.ttf)format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "seasons";
+    src: url(Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf)format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "agrandir";
+    src: url(Demo_Fonts/agrandir-grand.ttf)format("truetype");
+    font-weight: 400;
+}
