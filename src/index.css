@@ -4,11 +4,12 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-image: url("../public/background2.svg");
-  background-repeat: repeat-x;
-  background-size: 33% ;
-  background-position: center bottom;
+  color: rgba(255, 255, 255, 1);
+  background-image: url("../public/8dlfe27t.svg");
+  background-color: rgb(114, 114, 114);  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed;
 
   font-synthesis: none;

@@ -10,7 +10,7 @@
        "stock": 25,
        "brand": "Golden",
        "category": "Men",
-       "talla": "S / M / L / Xl",
+       "talla": "S / M / L / XL",
        "thumbnail": "https://tinypic.host/images/2024/09/05/prenda1.jpg",
        "images": [
          "https://tinypic.host/images/2024/09/05/prenda1.jpg"
@@ -26,7 +26,7 @@
        "stock": 100,
        "brand": "TrendWear",
        "category": "Men",
-       "talla": "S / M / L / Xl",
+       "talla": "S / M / L / XL",
        "thumbnail": "https://tinypic.host/images/2024/09/05/prenda2.jpg",
        "images": [
          "https://tinypic.host/images/2024/09/05/prenda2.jpg"
@@ -42,7 +42,7 @@
        "stock": 30,
        "brand": "SneakerPro",
        "category": "Men",
-       "talla": "S / M / L / Xl",
+       "talla": "S / M / L / XL",
        "thumbnail": "https://tinypic.host/images/2024/09/05/prenda3.jpg",
        "images": [
          "https://tinypic.host/images/2024/09/05/prenda3.jpg"
@@ -74,7 +74,7 @@
        "stock": 25,
        "brand": "TravelPlus",
        "category": "Women",
-       "talla": "S / M / L / Xl",
+       "talla": "S / M / L / XL",
        "thumbnail": "https://tinypic.host/images/2024/09/05/prenda5.jpg",
        "images": [
          "https://tinypic.host/images/2024/09/05/prenda5.jpg"
@@ -89,7 +89,7 @@
        "rating": 4.70,
        "stock": 75,
        "brand": "Women",
-       "talla": "S / M / L / Xl",
+       "talla": "S / M / L / XL",
        "category": "accessories",
        "thumbnail": "https://tinypic.host/images/2024/09/05/prenda6.jpg",
        "images": [
