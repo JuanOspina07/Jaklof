@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import "../styles/Products.css";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart";
 import { useCart } from "../hooks/useCart.js";
 
-// Función para formatear la moneda a pesos colombianos (COP)
 const formatCurrency = (value) => {
   return new Intl.NumberFormat('es-CO', {
     style: 'currency',
@@ -14,24 +13,49 @@ const formatCurrency = (value) => {
 
 export function Products({ products }) {
   const { addToCart, removeFromCart, cart } = useCart();
-  const audioRef = useRef(null); // Crear una referencia para el elemento de audio
+  const audioRef = useRef(null); 
 
-  // Función para comprobar si el producto está en el carrito
   const checkProductInCart = (product) => {
     return cart.some((item) => item.id === product.id);
   };
 
-  // Función para reproducir sonido
   const playSound = () => {
     if (audioRef.current) {
       audioRef.current.play();
     }
   };
 
-  // Estado para gestionar la imagen o la descripción
   const [hoveredProductId, setHoveredProductId] = useState(null);
+  
+  const [visibleProducts, setVisibleProducts] = useState(5); 
+  
+  const lastProductRef = useRef(); 
 
-  // Verificar si la lista de productos está cargada o vacía
+  const loadMoreProducts = useCallback((entries) => {
+    const [entry] = entries;
+    if (entry.isIntersecting) {
+      setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 10); 
+    }
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(loadMoreProducts, {
+      root: null,
+      rootMargin: '200px',
+      threshold: 0.1,
+    });
+
+    if (lastProductRef.current) {
+      observer.observe(lastProductRef.current);
+    }
+
+    return () => {
+      if (lastProductRef.current) {
+        observer.unobserve(lastProductRef.current);
+      }
+    };
+  }, [loadMoreProducts]);
+
   if (!products || products.length === 0) {
     return <p>No hay productos disponibles</p>;
   }
@@ -39,12 +63,15 @@ export function Products({ products }) {
   return (
     <main className="products">
       <ul>
-        {products.map((product) => {
+        {products.slice(0, visibleProducts).map((product, index) => {
           const isProductInCart = checkProductInCart(product);
+
+          const isLastProduct = index === visibleProducts - 1;
 
           return (
             <li
               key={product.id}
+              ref={isLastProduct ? lastProductRef : null}
               onMouseEnter={() => setHoveredProductId(product.id)} // Cambia al pasar el mouse
               onMouseLeave={() => setHoveredProductId(null)} // Regresa a la imagen cuando se quita el mouse
             >

@@ -13,8 +13,10 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
+    "gapi-script": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2",
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
