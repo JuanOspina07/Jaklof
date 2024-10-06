@@ -17,3 +17,4 @@ para generar las dependencias necesarias para deployd
 REACT
 TAILWIND CSS
 MUI MATERIAL
+GOOGLE STORAGE ND LOGIN
