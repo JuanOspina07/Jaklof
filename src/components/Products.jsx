@@ -11,7 +11,7 @@ const formatCurrency = (value) => {
   }).format(value);
 };
 
-export function Products({ products }) {
+export function Products() {
   const { addToCart, removeFromCart, cart } = useCart();
   const audioRef = useRef(null); 
 
@@ -28,6 +28,8 @@ export function Products({ products }) {
   const [hoveredProductId, setHoveredProductId] = useState(null);
   
   const [visibleProducts, setVisibleProducts] = useState(5); 
+  const [products, setProducts] = useState([]); 
+  const [loading, setLoading] = useState(true); 
   
   const lastProductRef = useRef(); 
 
@@ -37,6 +39,29 @@ export function Products({ products }) {
       setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 10); 
     }
   }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/products/jaklof');
+        const data = await response.json();
+  
+        if (Array.isArray(data)) {
+          setProducts(data); 
+        } else {
+          console.error('La respuesta no es un array de productos:', data);
+        }
+  
+        setLoading(false);
+      } catch (error) {
+        console.error('Error al obtener los productos:', error);
+        setLoading(false);
+      }
+    };
+  
+    fetchProducts();
+  }, []);
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(loadMoreProducts, {
@@ -56,6 +81,10 @@ export function Products({ products }) {
     };
   }, [loadMoreProducts]);
 
+  if (loading) {
+    return <p>Cargando productos...</p>;
+  }
+
   if (!products || products.length === 0) {
     return <p>No hay productos disponibles</p>;
   }
@@ -72,10 +101,9 @@ export function Products({ products }) {
             <li
               key={product.id}
               ref={isLastProduct ? lastProductRef : null}
-              onMouseEnter={() => setHoveredProductId(product.id)} // Cambia al pasar el mouse
-              onMouseLeave={() => setHoveredProductId(null)} // Regresa a la imagen cuando se quita el mouse
+              onMouseEnter={() => setHoveredProductId(product.id)} 
+              onMouseLeave={() => setHoveredProductId(null)}
             >
-              {/* Mostrar la imagen o la descripción según el estado del hover */}
               {hoveredProductId === product.id ? (
                 <div className="product-description">
                   <p>{product.description}</p>
@@ -84,23 +112,20 @@ export function Products({ products }) {
                 <img src={product.thumbnail} alt={product.title} />
               )}
 
-              {/* Información del producto */}
               <div>
                 <strong>{product.title}</strong> - {formatCurrency(product.price)}
               </div>
 
-              {/* Mostrar tallas */}
               <div>
                 <span>Tallas: {product.talla}</span>
               </div>
 
-              {/* Botón para añadir o quitar del carrito */}
               <div>
                 <button
                   className="shadow__btn"
                   style={{ backgroundColor: isProductInCart ? "red" : "rgb(0,153,117)" }}
                   onClick={() => {
-                    playSound(); // Reproducir sonido al hacer clic
+                    playSound();
                     isProductInCart
                       ? removeFromCart(product)
                       : addToCart(product);
