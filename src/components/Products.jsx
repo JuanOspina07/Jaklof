@@ -27,7 +27,7 @@ export function Products() {
 
   const [hoveredProductId, setHoveredProductId] = useState(null);
   
-  const [visibleProducts, setVisibleProducts] = useState(5); 
+  const [visibleProducts, setVisibleProducts] = useState(); 
   const [products, setProducts] = useState([]); 
   const [loading, setLoading] = useState(true); 
   
