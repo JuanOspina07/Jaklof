@@ -1,0 +1,67 @@
+.pay-modal {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background: rgba(0, 0, 0, 0.5);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 1000;
+   }
+   
+   .pay-content {
+     background: white;
+     padding: 20px;
+     width: 300px;
+     border-radius: 8px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+     color: black; 
+     max-height: 80vh; 
+     overflow-y: auto; 
+   }
+   
+   .pay-content h2 {
+     margin-top: 0;
+     color: black;
+   }
+   
+   .pay-content form label {
+     display: block;
+     margin: 10px 0;
+     color: black;
+   }
+   
+   .pay-content form input,
+   .pay-content form select {
+     color: white; 
+     background-color: #333; 
+     width: 100%;
+     padding: 8px;
+     margin-top: 5px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+   }
+   
+   .pay-content form select {
+     appearance: none; 
+     padding-right: 10px;
+   }
+   
+   .pay-content form button {
+     margin-top: 10px;
+     width: 100%;
+     padding: 10px;
+     background-color: #4CAF50; 
+     color: white;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+   }
+   
+   .pay-content form button[type="button"] {
+     background-color: #f44336; 
+     margin-top: 5px;
+   }
+   
