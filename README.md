@@ -6,15 +6,20 @@ WEB PAGE
 -DIEGO OSPINA
 -JUAN RUIZ
 
+//DESCARGAR DEPENDENCIAS
+NPM INSTALL
+//LEVANTAR UN LOCALHOST
 NPM RUN DEV
-
-para iniciar el proyecto desde el LocalHost
-
+//GENERAR DEPENDENCIAS PARA EL DEPLOYD
 NPM RUN BUILD
 
-para generar las dependencias necesarias para deployd
+//////////////////////////////////////
+-REACT                            ///
+-TAILWIND CSS                     ///
+-MUI MATERIAL                     ///
+-GOOGLE STORAGE ND LOGIN          ///
+-DB MYSQL                         ///
+/////////////////////////////////////
 
-REACT
-TAILWIND CSS
-MUI MATERIAL
-GOOGLE STORAGE ND LOGIN
+REPOSITORIO BACKEND
+https://github.com/JuanRuiz1012/Backen2Jaklof.git
