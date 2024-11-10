@@ -3,6 +3,7 @@ import "../styles/Products.css";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart";
 import { useCart } from "../hooks/useCart.js";
+import { useFilters } from '../hooks/useFilters.js';
 
 const formatCurrency = (value) => {
   return new Intl.NumberFormat('es-CO', {
@@ -13,25 +14,17 @@ const formatCurrency = (value) => {
 
 export function Products() {
   const { addToCart, removeFromCart, cart } = useCart();
+  const { filters } = useFilters(); 
+
   const audioRef = useRef(null); 
 
-  const checkProductInCart = (product) => {
-    return cart.some((item) => item.id === product.id);
-  };
-
-  const playSound = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
-  };
+  const checkProductInCart = (product) => cart.some((item) => item.id === product.id);
 
   const [hoveredProductId, setHoveredProductId] = useState(null);
-  
-  const [visibleProducts, setVisibleProducts] = useState(); 
+  const [visibleProducts, setVisibleProducts] = useState(10); 
   const [products, setProducts] = useState([]); 
   const [loading, setLoading] = useState(true); 
-  
-  const lastProductRef = useRef(); 
+  const lastProductRef = useRef();
 
   const loadMoreProducts = useCallback((entries) => {
     const [entry] = entries;
@@ -43,7 +36,7 @@ export function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/products/jaklof');
+        const response = await fetch('http://localhost:4000/products');
         const data = await response.json();
   
         if (Array.isArray(data)) {
@@ -62,6 +55,9 @@ export function Products() {
     fetchProducts();
   }, []);
   
+  const filteredProducts = products
+    .filter(product => product.price >= filters.minPrice)
+    .filter(product => filters.category === "all" || product.category === filters.category);
 
   useEffect(() => {
     const observer = new IntersectionObserver(loadMoreProducts, {
@@ -85,16 +81,15 @@ export function Products() {
     return <p>Cargando productos...</p>;
   }
 
-  if (!products || products.length === 0) {
+  if (!filteredProducts || filteredProducts.length === 0) {
     return <p>No hay productos disponibles</p>;
   }
 
   return (
     <main className="products">
       <ul>
-        {products.slice(0, visibleProducts).map((product, index) => {
+        {filteredProducts.slice(0, visibleProducts).map((product, index) => {
           const isProductInCart = checkProductInCart(product);
-
           const isLastProduct = index === visibleProducts - 1;
 
           return (
