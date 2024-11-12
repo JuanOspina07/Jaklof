@@ -42,7 +42,7 @@ export function Products() {
         if (Array.isArray(data)) {
           setProducts(data); 
         } else {
-          console.error('La respuesta no es un array de productos:', data);
+          console.error('Error al obtener los productos:', data);
         }
   
         setLoading(false);
