@@ -43,13 +43,13 @@ export function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/products/jaklof');
+        const response = await fetch('http://localhost:4000/products');
         const data = await response.json();
   
         if (Array.isArray(data)) {
           setProducts(data); 
         } else {
-          console.error('La respuesta no es un array de productos:', data);
+          console.error('Error al obtener los productos:', data);
         }
   
         setLoading(false);
