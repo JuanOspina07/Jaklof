@@ -3,7 +3,7 @@ import "../styles/Products.css";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart";
 import { useCart } from "../hooks/useCart.js";
-import { useFilters } from '../hooks/useFilters.js';
+import { useFilters } from "../hooks/useFilters.js";
 
 const formatCurrency = (value) => {
   return new Intl.NumberFormat('es-CO', {
@@ -18,7 +18,8 @@ export function Products() {
 
   const audioRef = useRef(null); 
 
-  const checkProductInCart = (product) => cart.some((item) => item.id === product.id);
+  const checkProductInCart = (product) => 
+    cart.some((item) => item.id === product.id);
 
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [visibleProducts, setVisibleProducts] = useState(10); 
@@ -42,7 +43,7 @@ export function Products() {
         if (Array.isArray(data)) {
           setProducts(data); 
         } else {
-          console.error('Error al obtener los productos:', data);
+          console.error('La respuesta no es un array de productos:', data);
         }
   
         setLoading(false);
@@ -76,6 +77,11 @@ export function Products() {
       }
     };
   }, [loadMoreProducts]);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    playSound();
+  };
 
   if (loading) {
     return <p>Cargando productos...</p>;
@@ -112,7 +118,7 @@ export function Products() {
               </div>
 
               <div>
-                <span>Tallas: {product.talla}</span>
+                <strong>{product.talla}</strong>
               </div>
 
               <div>
@@ -120,10 +126,9 @@ export function Products() {
                   className="shadow__btn"
                   style={{ backgroundColor: isProductInCart ? "red" : "rgb(0,153,117)" }}
                   onClick={() => {
-                    playSound();
                     isProductInCart
                       ? removeFromCart(product)
-                      : addToCart(product);
+                      : handleAddToCart(product);
                   }}
                 >
                   {isProductInCart ? <RemoveShoppingCart /> : <ShoppingCart />}
