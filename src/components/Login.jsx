@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';import { IconButton, Popover, Typography } from "@mui/material";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { IconButton, Popover, Typography, Button } from "@mui/material";
 import "../styles/Login.css";
-import { FullscreenExit } from "@mui/icons-material";
 
 const Login = () => {
   const clientId =
     "689765458955-clnie731bl7546rkutj2sg1he25dosia.apps.googleusercontent.com";
   const [anchorEl, setAnchorEl] = useState(null);
   const [userName, setUserName] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
 
   useEffect(() => {
     const start = () => {
@@ -22,8 +23,8 @@ const Login = () => {
   }, []);
 
   const onSuccess = (res) => {
-    console.log("Login Success:", res);
     setUserName(res.profileObj.name);
+    setUserEmail(res.profileObj.email);
     handleClose();
   };
 
@@ -32,7 +33,9 @@ const Login = () => {
   };
 
   const handleIconClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    if (!userName) {
+      setAnchorEl(event.currentTarget);
+    }
   };
 
   const handleClose = () => {
@@ -42,44 +45,60 @@ const Login = () => {
   const open = Boolean(anchorEl);
   const id = open ? "login-popover" : undefined;
 
+  const handleLogout = () => {
+    setUserName(null);
+    setUserEmail(null);
+  };
+
   return (
     <div className="login-container">
-      <div className="login-button">
-        <IconButton onClick={handleIconClick}>
-          <AccountCircleIcon sx={{ color: "white" }} />
-        </IconButton>
-      </div>
-
-      {userName && (
-        <Typography variant="body2" className="user-name">
-          {userName}
-        </Typography>
+      {/* Icono de login */}
+      {!userName ? (
+        <div className="login-button">
+          <IconButton onClick={handleIconClick}>
+            <AccountCircleIcon sx={{ color: "white", fontSize: "2.8rem" }} />
+          </IconButton>
+        </div>
+      ) : (
+        // Si el usuario está autenticado
+        <div className="user-info">
+          <Typography variant="h5" className="user-name">
+            Bienvenido, {userName}
+          </Typography>
+          <Button variant="contained" color="error" onClick={handleLogout}>
+            Cerrar sesión
+          </Button>
+        </div>
       )}
 
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <div style={{ padding: "16px" }}>
-          <GoogleLogin
-            clientId={clientId}
-            buttonText="Login with Google"
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={"single_host_origin"}
-          />
-        </div>
-      </Popover>
+      {/* Popover para el login */}
+      {!userName && (
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <div className="popover-content">
+            <GoogleLogin
+              clientId={clientId}
+              buttonText="Iniciar sesión con Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={"single_host_origin"}
+              className="google-login-button"
+            />
+          </div>
+        </Popover>
+      )}
     </div>
   );
 };
