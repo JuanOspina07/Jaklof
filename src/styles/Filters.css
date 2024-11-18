@@ -1,13 +1,14 @@
 
 .tittle{
-  color: #eaff82;
+  color: #04d9ff;
     font-family: "seasons";
     text-align: center;
-    font-size: 7rem;
+    font-size: 8rem;
     margin-bottom: 0px;
     letter-spacing: 2px;
     text-transform: uppercase;
     animation: fadeIn 1.5s ease;
+    margin-top: 10px;
 }
 .filters {
   display: flex;
@@ -18,11 +19,17 @@
   font-weight: 700;
   align-items: center;
 }
+.pre{
+  font-family: agrandir;
+  font-size: 20px;
+  color: #ffff;
+}
 
 .filters > div {
   display: flex;
   gap: 1rem;
   align-items: center;
+  
 }
 
 .category-buttons {
@@ -46,11 +53,50 @@
 
 .category-buttons button.active {
   align-items: center;
-  background-color: #007bff;
+  background: linear-gradient(135deg, #f3c9f3, #04d9ff);
   color: white;
   border-color: #007bff;
 }
 
 .category-buttons button:hover {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #f3c9f3, #04d9ff);
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes neon-flicker {
+  0% { text-shadow: 
+      0 0 5px rgb(255,255,255,0.4), 
+      0 0 10px rgb(255,255,255,0.4), 
+      0 0 15px rgb(255,255,255,0.4),
+      0 0 20px rgb(255,255,255,0.4),
+      0 0 25px rgb(255,255,255,0.4),
+      0 0 30px rgb(255,255,255,0.4); 
+  }
+  50% { text-shadow: 
+      0 0 5px rgb(255,255,255,0.4), 
+      0 0 10px rgb(255,255,255,0.4), 
+      0 0 15px rgb(255,255,255,0.4), 
+      0 0 20px rgb(255,255,255,0.4),
+      0 0 25px rgb(255,255,255,0.4),
+      0 0 20px rgb(255,255,255,0.4);
+  }
+  100% { text-shadow: 
+      0 0 5px rgb(255,255,255,0.4), 
+      0 0 10px rgb(255,255,255,0.4), 
+      0 0 15px rgb(255,255,255,0.4),
+      0 0 20px rgb(255,255,255,0.4),
+      0 0 25px rgb(255,255,255,0.4),
+      0 0 30px rgb(255,255,255,0.4); 
+  }
+}
+
+.neon {
+  animation: neon-flicker 1.5s infinite alternate;
+}
+

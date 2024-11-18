@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/Pay.css';
+import Loader2 from '../components/Loader2';
 
-const Pay = ({ onClose, cart }) => {
+const Pay = ({ onClose, cart, clearCart }) => {
   const [address, setAddress] = useState('');
   const [cardType, setCardType] = useState('');
   const [cardNumber, setCardNumber] = useState('');
@@ -9,6 +10,7 @@ const Pay = ({ onClose, cart }) => {
   const [cvv, setCvv] = useState('');
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState(null);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const handleAddressChange = (e) => setAddress(e.target.value);
   const handleCardTypeChange = (e) => setCardType(e.target.value);
@@ -39,19 +41,61 @@ const Pay = ({ onClose, cart }) => {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setNotification(null);
 
-    setTimeout(() => {
-      if (validateCardDetails()) {
-        setNotification(true);
+    const productIds = cart.map((item) => item.id);
+    try {
+      const stockResponse = await fetch("http://localhost:4000/check-stock", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productIds }),
+      });
+
+      const stockData = await stockResponse.json();
+
+      if (stockData.error) {
+        setNotification(stockData.error); 
       } else {
-        setNotification(false);
+        if (validateCardDetails()) {
+          try {
+            const response = await fetch("http://localhost:4000/update-stock", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(cart.map(item => ({
+                id: item.id,
+                quantity: item.quantity
+              }))),
+            });
+
+            if (response.ok) {
+              setNotification("Pago exitoso!");
+              setPaymentSuccess(true);
+              
+              setTimeout(() => {
+                 onClose();
+                 clearCart(); 
+                 setLoading(false); 
+              }, 5000); 
+            } else {
+              setNotification("Error al procesar el pago");
+            }
+          } catch (error) {
+            setNotification("Error al procesar el pago");
+          }
+        } else {
+          setNotification("Datos de tarjeta incorrectos o campos incompletos.");
+        }
       }
-      setLoading(false);
-    }, 3000);
+    } catch (error) {
+      setNotification("Error al verificar el stock");
+    }
   };
 
   const total = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
@@ -66,12 +110,12 @@ const Pay = ({ onClose, cart }) => {
           <ul>
             {cart.map((item) => (
               <li key={item.id}>
-                <span>{item.title}</span> - ${item.price} x {item.quantity}
+                <span>{item.title}</span> - ${item.price.toLocaleString('es-CO')} x {item.quantity}
               </li>
             ))}
           </ul>
           <div className="total-amount">
-            <strong>Total: ${total.toFixed(2)}</strong>
+            <strong>Total: ${total.toLocaleString('es-CO')}</strong>
           </div>
         </div>
 
@@ -89,12 +133,44 @@ const Pay = ({ onClose, cart }) => {
 
           <label>
             Tipo de Tarjeta
-            <select value={cardType} onChange={handleCardTypeChange} required>
-              <option value="">Seleccione una tarjeta</option>
-              <option value="bancolombia">Bancolombia</option>
-              <option value="davivienda">Davivienda</option>
-              <option value="mastercard">Mastercard</option>
-            </select>
+            <div className="bank-selection">
+              <div className="bank-option">
+                <input
+                  type="radio"
+                  id="bancolombia"
+                  name="cardType"
+                  value="bancolombia"
+                  onChange={handleCardTypeChange}
+                />
+                <label htmlFor="bancolombia">
+                  <img src="public/bancolombia2.png" alt="Bancolombia" />
+                </label>
+              </div>
+              <div className="bank-option">
+                <input
+                  type="radio"
+                  id="davivienda"
+                  name="cardType"
+                  value="davivienda"
+                  onChange={handleCardTypeChange}
+                />
+                <label htmlFor="davivienda">
+                  <img src="public/BANCODAVIVIENDA.jpg" alt="Davivienda" />
+                </label>
+              </div>
+              <div className="bank-option">
+                <input
+                  type="radio"
+                  id="mastercard"
+                  name="cardType"
+                  value="mastercard"
+                  onChange={handleCardTypeChange}
+                />
+                <label htmlFor="mastercard">
+                  <img src="/public/mastercard.png" alt="Mastercard" />
+                </label>
+              </div>
+            </div>
           </label>
 
           <label>
@@ -133,17 +209,15 @@ const Pay = ({ onClose, cart }) => {
             />
           </label>
 
-          <button type="submit" disabled={loading}>
-            {loading ? 'Procesando...' : 'Pagar'}
-          </button>
-          <button type="button" onClick={onClose}>
-            Cerrar
-          </button>
+          <button className='bt6' type="submit">Pagar</button>
+          <button className='bt5' type="button" onClick={onClose}>Cerrar</button>
         </form>
 
-        {notification === true && <p className="success">Pago exitoso!</p>}
-        {notification === false && <p className="error">Datos de tarjeta incorrectos o campos incompletos.</p>}
+        {loading && <Loader2 />}
+        {notification && <p className={notification === "Pago exitoso!" ? "success" : "error"}>{notification}</p>}
       </div>
+
+      {paymentSuccess && <Loader2 fullScreen />}
     </div>
   );
 };

@@ -3,16 +3,15 @@ import { useFilters } from "../hooks/useFilters.js";
 import Loader from "./Loader";
 import "../styles/Filters.css";
 
-// Función para formatear el precio en pesos colombianos
 const formatCurrency = (value) => {
   return value
     .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
 export function Filters() {
   const { filters, setFilters } = useFilters();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Asegúrate de que loading empiece en false
   const minPriceFilterId = useId();
   const categoryFilterId = useId();
 
@@ -24,27 +23,28 @@ export function Filters() {
   };
 
   const handleChangeCategory = (category) => {
+    // Activar el loader solo cuando se cambie la categoría
     setLoading(true);
-    console.log("Cargando...");
 
     setFilters((prevState) => ({
       ...prevState,
       category: category,
     }));
 
+    // Detener el loader después de 2 segundos
     setTimeout(() => {
-      setLoading(false);
+      setLoading(false); // Detener el loader
       console.log("Carga completada");
     }, 2000);
   };
 
   return (
     <section className="filters">
-      {loading && <p>Cargando...</p>}
+      {/* El loader solo aparece cuando 'loading' es true */}
       <Loader show={loading} />
 
       <div>
-        <label htmlFor={minPriceFilterId}>Precio a partir de:</label>
+        <label className="pre" htmlFor={minPriceFilterId}>Precio a partir de:</label>
         <input
           type="range"
           id={minPriceFilterId}

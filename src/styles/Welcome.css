@@ -20,7 +20,7 @@
   }
   
   .title {
-    color: #eaff82;
+    color: #04d9ff;
     font-family: "seasons";
     text-align: center;
     font-size: 13rem;
@@ -45,7 +45,7 @@
     padding: 15px 40px;
     font-size: 1.2rem;
     color: #000;
-    background-color: #eaff82;
+    background-color: #04d9ff;
     border: none;
     border-radius: 30px;
     text-decoration: none;
@@ -61,7 +61,7 @@
     background-color: transparent;
     position: absolute;
     top: 50%; /* Coloca el botón al 50% desde la parte superior */
-  left: 50%;
+    left: 50%;
     border-radius: 7px;
     transform: translate(-50%, 650%);
     transition: all .3s;
@@ -72,18 +72,8 @@
   .Btn:focus {
     outline: none; 
   }
-  .svgContainer {
-    border: none;
-    width: 100%;
-    height: 100%;
-    transition: all .3s;
-  }
-  .svgIcon{
-    border: none;
-    margin: 0;
-    width: 45px;
-    height: 45px;
-  }
+
+
   
  
   .Btn:hover .BG {

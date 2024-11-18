@@ -4,6 +4,8 @@ import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart";
 import { useCart } from "../hooks/useCart.js";
 import { useFilters } from "../hooks/useFilters.js";
+import Loader from './Loader'; 
+
 
 const formatCurrency = (value) => {
   return new Intl.NumberFormat('es-CO', {
@@ -22,7 +24,7 @@ export function Products() {
     cart.some((item) => item.id === product.id);
 
   const [hoveredProductId, setHoveredProductId] = useState(null);
-  const [visibleProducts, setVisibleProducts] = useState(10); 
+  const [visibleProducts, setVisibleProducts] = useState(60); 
   const [products, setProducts] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const lastProductRef = useRef();
@@ -30,7 +32,7 @@ export function Products() {
   const loadMoreProducts = useCallback((entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 10); 
+      setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 60); 
     }
   }, []);
 
@@ -45,14 +47,12 @@ export function Products() {
         } else {
           console.error('La respuesta no es un array de productos:', data);
         }
-  
-        setLoading(false);
+        setLoading(false); 
       } catch (error) {
         console.error('Error al obtener los productos:', error);
-        setLoading(false);
+        setLoading(false); 
       }
     };
-  
     fetchProducts();
   }, []);
   
@@ -84,7 +84,7 @@ export function Products() {
   };
 
   if (loading) {
-    return <p>Cargando productos...</p>;
+    return <Loader show={true} />;
   }
 
   if (!filteredProducts || filteredProducts.length === 0) {
@@ -105,13 +105,22 @@ export function Products() {
               onMouseEnter={() => setHoveredProductId(product.id)} 
               onMouseLeave={() => setHoveredProductId(null)}
             >
-              {hoveredProductId === product.id ? (
+                 {hoveredProductId === product.id ? (
                 <div className="product-description">
                   <p>{product.description}</p>
                 </div>
               ) : (
-                <img src={product.thumbnail} alt={product.title} />
+                <div className="product-image">
+                  <img
+                    src={product.images}
+                    alt={product.title}
+                    onError={(e) => {
+                      e.target.src = "/placeholder-image.jpg"; 
+                    }}
+                  />
+                </div>
               )}
+    
 
               <div>
                 <strong>{product.title}</strong> - {formatCurrency(product.price)}
