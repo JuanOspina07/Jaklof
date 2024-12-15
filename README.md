@@ -19,6 +19,7 @@ NPM RUN BUILD
 -MUI MATERIAL                     ///
 -GOOGLE STORAGE ND LOGIN          ///
 -DB MYSQL                         ///
+-NODE MAILER                      ///
 /////////////////////////////////////
 
 REPOSITORIO BACKEND
