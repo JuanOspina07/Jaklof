@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Pay.css';
 import Loader2 from '../components/Loader2';
 
-const Pay = ({ onClose, cart, clearCart }) => {
+const Pay = ({ refresh,onClose, cart, clearCart }) => {
   const [address, setAddress] = useState('');
   const [cardType, setCardType] = useState('');
   const [cardNumber, setCardNumber] = useState('');
@@ -11,11 +11,13 @@ const Pay = ({ onClose, cart, clearCart }) => {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [email, setEmail] = useState('');
 
   const handleAddressChange = (e) => setAddress(e.target.value);
   const handleCardTypeChange = (e) => setCardType(e.target.value);
   const handleExpiryDateChange = (e) => setExpiryDate(e.target.value);
   const handleCvvChange = (e) => setCvv(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
 
   const formatCardNumber = (value) => {
     const cleanedValue = value.replace(/\D/g, '');
@@ -47,7 +49,9 @@ const Pay = ({ onClose, cart, clearCart }) => {
     setNotification(null);
 
     const productIds = cart.map((item) => item.id);
+
     try {
+      // Verificar stock
       const stockResponse = await fetch("http://localhost:4000/check-stock", {
         method: "POST",
         headers: {
@@ -58,43 +62,69 @@ const Pay = ({ onClose, cart, clearCart }) => {
 
       const stockData = await stockResponse.json();
 
-      if (stockData.error) {
-        setNotification(stockData.error); 
-      } else {
-        if (validateCardDetails()) {
-          try {
-            const response = await fetch("http://localhost:4000/update-stock", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(cart.map(item => ({
-                id: item.id,
-                quantity: item.quantity
-              }))),
-            });
-
-            if (response.ok) {
-              setNotification("Pago exitoso!");
-              setPaymentSuccess(true);
-              
-              setTimeout(() => {
-                 onClose();
-                 clearCart(); 
-                 setLoading(false); 
-              }, 5000); 
-            } else {
-              setNotification("Error al procesar el pago");
-            }
-          } catch (error) {
-            setNotification("Error al procesar el pago");
-          }
-        } else {
-          setNotification("Datos de tarjeta incorrectos o campos incompletos.");
-        }
+      if (!stockResponse.ok) {
+        throw new Error(stockData.error || "Error al verificar el stock.");
       }
+
+      if (!validateCardDetails()) {
+        setNotification("Datos de tarjeta incorrectos o campos incompletos.");
+        setLoading(false);
+        return;
+      }
+
+      // Actualizar stock
+      const updateResponse = await fetch("http://localhost:4000/update-stock", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          cart.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+          }))
+        ),
+      });
+
+      const updateData = await updateResponse.json();
+
+      if (!updateResponse.ok) {
+        throw new Error(updateData.error || "Error al actualizar el stock.");
+      }
+
+      // Enviar correo
+      const emailText = `Gracias por tu compra. Detalles:\n${cart
+        .map((item) => `- ${item.title} x${item.quantity}`)
+        .join("\n")}`;
+
+      const mailResponse = await fetch("http://localhost:4000/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: email,
+          subject: "Confirmación de compra",
+          text: emailText,
+        }),
+      });
+
+      const mailData = await mailResponse.json();
+
+      if (!mailResponse.ok) {
+        throw new Error(mailData.error || "Error al enviar el correo.");
+      }
+
+      setNotification("Pago y confirmación por correo exitosos!");
+      setPaymentSuccess(true);
+      setTimeout(() => {
+        onClose();
+        clearCart();
+        setLoading(false);
+      }, 5000);
     } catch (error) {
-      setNotification("Error al verificar el stock");
+      setNotification(error.message || "Error inesperado.");
+      setLoading(false);
     }
   };
 
@@ -132,6 +162,17 @@ const Pay = ({ onClose, cart, clearCart }) => {
           </label>
 
           <label>
+            Email
+            <input
+              type="text"
+              placeholder="Ingrese su Correo"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
+          </label>
+
+          <label>
             Tipo de Tarjeta
             <div className="bank-selection">
               <div className="bank-option">
@@ -143,7 +184,7 @@ const Pay = ({ onClose, cart, clearCart }) => {
                   onChange={handleCardTypeChange}
                 />
                 <label htmlFor="bancolombia">
-                  <img src="public/bancolombia2.png" alt="Bancolombia" />
+                  <img src="/bancolombia2.png" alt="Bancolombia" />
                 </label>
               </div>
               <div className="bank-option">
@@ -155,7 +196,7 @@ const Pay = ({ onClose, cart, clearCart }) => {
                   onChange={handleCardTypeChange}
                 />
                 <label htmlFor="davivienda">
-                  <img src="public/BANCODAVIVIENDA.jpg" alt="Davivienda" />
+                  <img src="/BANCODAVIVIENDA.jpg" alt="Davivienda" />
                 </label>
               </div>
               <div className="bank-option">
@@ -167,7 +208,7 @@ const Pay = ({ onClose, cart, clearCart }) => {
                   onChange={handleCardTypeChange}
                 />
                 <label htmlFor="mastercard">
-                  <img src="/public/mastercard.png" alt="Mastercard" />
+                  <img src="/mastercard.png" alt="Mastercard" />
                 </label>
               </div>
             </div>
@@ -209,12 +250,16 @@ const Pay = ({ onClose, cart, clearCart }) => {
             />
           </label>
 
-          <button className='bt6' type="submit">Pagar</button>
-          <button className='bt5' type="button" onClick={onClose}>Cerrar</button>
+          <button className="bt6" type="submit">
+            Pagar
+          </button>
+          <button className="bt5" type="button" onClick={onClose}>
+            Cerrar
+          </button>
         </form>
 
         {loading && <Loader2 />}
-        {notification && <p className={notification === "Pago exitoso!" ? "success" : "error"}>{notification}</p>}
+        {notification && <p className={notification === "Pago y confirmación por correo exitosos!" ? "success" : "error"}>{notification}</p>}
       </div>
 
       {paymentSuccess && <Loader2 fullScreen />}
