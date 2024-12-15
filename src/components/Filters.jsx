@@ -3,15 +3,11 @@ import { useFilters } from "../hooks/useFilters.js";
 import Loader from "./Loader";
 import "../styles/Filters.css";
 
-const formatCurrency = (value) => {
-  return value
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-};
+//prueba de branch
 
 export function Filters() {
   const { filters, setFilters } = useFilters();
-  const [loading, setLoading] = useState(false); // Asegúrate de que loading empiece en false
+  const [loading, setLoading] = useState(false);
   const minPriceFilterId = useId();
   const categoryFilterId = useId();
 
@@ -22,60 +18,46 @@ export function Filters() {
     }));
   };
 
-  const handleChangeCategory = (category) => {
-    // Activar el loader solo cuando se cambie la categoría
+  const handleChangeCategory = (event) => {
     setLoading(true);
+    console.log("Cargando...");
 
     setFilters((prevState) => ({
       ...prevState,
-      category: category,
+      category: event.target.value,
     }));
 
-    // Detener el loader después de 2 segundos
     setTimeout(() => {
-      setLoading(false); // Detener el loader
+      setLoading(false);
       console.log("Carga completada");
     }, 2000);
   };
 
   return (
     <section className="filters">
-      {/* El loader solo aparece cuando 'loading' es true */}
+      {loading && <p>Cargando...</p>}
       <Loader show={loading} />
 
       <div>
-        <label className="pre" htmlFor={minPriceFilterId}>Precio a partir de:</label>
+        <label htmlFor={minPriceFilterId}>Precio a partir de:</label>
         <input
           type="range"
           id={minPriceFilterId}
-          min="50000"
-          max="300000"
-          step="10000"
+          min="50"
+          max="1000"
           onChange={handleChangeMinPrice}
           value={filters.minPrice}
         />
-        <span>${formatCurrency(filters.minPrice)}</span>
+        <span>${filters.minPrice}</span>
       </div>
 
-      <div className="category-buttons">
-        <button
-          className={filters.category === "all" ? "active" : ""}
-          onClick={() => handleChangeCategory("all")}
-        >
-          Todos
-        </button>
-        <button
-          className={filters.category === "Men" ? "active" : ""}
-          onClick={() => handleChangeCategory("Men")}
-        >
-          Hombres
-        </button>
-        <button
-          className={filters.category === "Women" ? "active" : ""}
-          onClick={() => handleChangeCategory("Women")}
-        >
-          Mujeres
-        </button>
+      <div>
+        <label htmlFor={categoryFilterId}>Categoría</label>
+        <select id={categoryFilterId} onChange={handleChangeCategory}>
+          <option value="all">Todos</option>
+          <option value="Men">Hombres</option>
+          <option value="Women">Mujeres</option>
+        </select>
       </div>
     </section>
   );
