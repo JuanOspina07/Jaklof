@@ -1,0 +1,128 @@
+/* Estilo general del Dashboard */
+.admin-dashboard {
+    font-family: 'Roboto', sans-serif;
+    background-color: transparent;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  /* Estilo del formulario de login */
+  .login-form {
+    max-width: 450px;
+    width: 100%;
+    background: transparent;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .login-form:hover {
+    transform: translateY(-10px);
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #ffff;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  
+  /* Estilo de los campos de entrada */
+  .login-form input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .login-form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Estilo del botón de login */
+  .login-form button {
+    width: 100%;
+    padding: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo del contenedor de gráficos */
+  .chart-container {
+    margin-top: 30px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilo para los mensajes de error */
+  .error {
+    color: #ff6347;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  /* Estilo de los botones de administración */
+  .admin-button-container {
+    text-align: center;
+    margin: 40px 0;
+  }
+  
+  .admin-button {
+    margin: 0%;
+    font-family: "agrandir";
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    color: #000;
+    background-color: #04d9ff;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-button:hover {
+    background-color: #ff4500;
+    transform: scale(1.05);
+  }
+  
+  .admin-button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Añadir un toque visual extra */
+
+  
+  .admin-dashboard h1 {
+    color: #fff;
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+  
