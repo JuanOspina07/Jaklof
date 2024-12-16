@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AdminDashboard from "../AdminDashboard";
 import "../../styles/Welcome.css";
 import "../../styles/fonts.css";
-
+//prueba azure
 const WelcomeConfig = ({ onShowAppContent }) => {
   const [showAdminDashboard, setShowAdminDashboard] = useState(false);
 
