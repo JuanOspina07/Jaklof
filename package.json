@@ -13,9 +13,11 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
+    "chart.js": "^4.4.7",
     "cors": "^2.8.5",
     "gapi-script": "^1.2.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
     "styled-components": "^6.1.13"
